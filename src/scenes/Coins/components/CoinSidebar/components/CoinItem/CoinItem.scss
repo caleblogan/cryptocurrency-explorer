@@ -1,0 +1,26 @@
+@import '../../../../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../../../../node_modules/bootstrap/scss/variables';
+
+.item {
+  list-style: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  color: white;
+  background: $gray-900;
+  border-bottom: 1px solid #444;
+}
+
+.active {
+  border-left: 3px solid $orange;
+}
+
+.thumbnail {
+  display: inline-block;
+  margin-right: 10px;
+  //background-size: 200%;
+  overflow: hidden;
+  //zoom: 1.1;
+  //transform: scale(1.1);
+  //transform-origin: 0 0;
+}
