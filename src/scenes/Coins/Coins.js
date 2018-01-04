@@ -10,6 +10,8 @@ import CoinFilter from "./components/CoinFilter/CoinFilter"
 import CoinSidebar from "./components/CoinSidebar/CoinSidebar"
 import Coin from "./components/Coin/Coin"
 
+import loadingImg from './imgs/loading-bubbles.svg';
+
 class Coins extends Component {
 
   constructor(props) {
@@ -76,24 +78,30 @@ class Coins extends Component {
 
   render() {
     return (
-      <Row noGutters>
-        <Col xs="12">
-          <CoinFilter
-            searchValue={this.state.searchValue}
-            onChange={this.handleSearchChange}
-            onSubmit={this.handleSearchSubmit}
-          />
-        </Col>
-        <Col md="3">
-          <CoinSidebar coins={this.filterCoins()} activeId={this.activeCoinId()}/>
-        </Col>
-        <Col md="9">
-          <Switch>
-            <Route exact path="/coins" render={props => (<Redirect to={`/coins/${this.defaultCoinId}`}/>)}/>
-            <Route path="/coins/:id" component={Coin}/>
-          </Switch>
-        </Col>
-      </Row>
+      <div>
+      {this.state.isLoadingCoins ? (
+        <img className={styles.loading} src={loadingImg} alt="Loading icon" />
+      ) : (
+        <Row noGutters>
+          <Col xs="12">
+            <CoinFilter
+              searchValue={this.state.searchValue}
+              onChange={this.handleSearchChange}
+              onSubmit={this.handleSearchSubmit}
+            />
+          </Col>
+          <Col md="3">
+            <CoinSidebar coins={this.filterCoins()} activeId={this.activeCoinId()}/>
+          </Col>
+          <Col md="9">
+            <Switch>
+              <Route exact path="/coins" render={props => (<Redirect to={`/coins/${this.defaultCoinId}`}/>)}/>
+              <Route path="/coins/:id" component={Coin}/>
+            </Switch>
+          </Col>
+        </Row>
+      )}
+      </div>
     );
   }
 }

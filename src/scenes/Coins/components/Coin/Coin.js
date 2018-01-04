@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios'
 
 import styles from './Coin.scss';
+import loadingImg from '../../imgs/loading-bubbles.svg';
 
 
 class Coin extends Component {
@@ -34,7 +35,7 @@ class Coin extends Component {
       .then(data => {
         let coin = data.data;
         this.setState({
-          ...coin,
+          ...coin[0],
           isLoadingCoin: false
         });
       })
@@ -47,8 +48,14 @@ class Coin extends Component {
   render() {
     let coinId = this.props.match.params.id;
     return (
-      <div>
-        coinId: {coinId}
+      <div className={styles.coin}>
+        {this.state.isLoadingCoin ? (
+          <img className={styles.loading} src={loadingImg} alt="Loading icon" />
+        ) : (
+          <div>
+            <h2 className="text-center">{this.state.name}</h2>
+          </div>
+        )}
       </div>
     );
   }
