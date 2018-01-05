@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const localCss = new ExtractTextPlugin('styles-local.css');
 const globalCss = new ExtractTextPlugin('styles-global.css');
@@ -8,7 +9,7 @@ const config = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     path: path.resolve(__dirname, './dist/'),
-    publicPath: '/static/',
+    publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
@@ -51,7 +52,14 @@ const config = {
   },
   plugins: [
     localCss,
-    globalCss
+    globalCss,
+    new HtmlWebpackPlugin({
+      title: 'Crypto',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Crypto',
+      filename: '200.html',
+    }),
   ]
 };
 

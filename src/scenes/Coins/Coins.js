@@ -33,7 +33,7 @@ class Coins extends Component {
   loadCoins() {
     this.setState({isLoadingCoins: true});
     console.log('loading coins');
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=10')
+    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=0')
       .then(data => {
         let coins = data.data;
         this.setState({

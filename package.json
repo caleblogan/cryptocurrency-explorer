@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "node_modules/.bin/jest",
-    "start": "node_modules/.bin/webpack-dev-server --content-base public --hot"
+    "start": "node_modules/.bin/webpack-dev-server --content-base dist --hot",
+    "build": "node_modules/.bin/webpack"
   },
   "author": "Caleb Logan",
   "license": "ISC",
@@ -36,6 +37,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.9",

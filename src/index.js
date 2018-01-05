@@ -4,12 +4,15 @@ import {BrowserRouter} from 'react-router-dom'
 
 import App from './App'
 
+let root = document.createElement('div');
+root.id = 'root';
+document.body.appendChild(root);
 
 render(
   <BrowserRouter>
     <App/>
   </BrowserRouter>,
-  document.querySelector('#root')
+  root
 )
 
 
