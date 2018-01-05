@@ -1,31 +1,41 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
-import ScrollArea from 'react-scrollbar';
+import ReactScrollableList from 'react-scrollable-list';
 
 import CoinItem from "./components/CoinItem/CoinItem"
 
 import styles from './CoinSidebar.scss';
 
-function onFocus(e) {
-  console.log('------- grabbing focus ---------');
-}
+// class CoinSidebar extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//
+//   componentDidMount() {
+//   }
+//
+//   componentDidUpdate() {
+//   }
+//
+//   componentWillUnmount() {
+//   }
 
 const CoinSidebar = ({coins, activeId}) => {
   let coinList = coins.map(coin => (
-    <CoinItem key={coin.id} coin={coin} isActive={coin.id === activeId}/>
+    {id: coin.id, content: <CoinItem key={coin.id + coin.name} coin={coin} isActive={coin.id === activeId}/>}
   ));
+
   return (
     <div className={styles.wrapper}>
-      <ScrollArea
-        speed={1}
-        className={styles.scrollArea}
-        horizontal={false}
-      >
-        <ul className={styles.coinList} onFocus={onFocus}>
-          {coinList}
-        </ul>
-      </ScrollArea>
+      {/*<ul className={styles.coinList}>*/}
+      {/*{coinList}*/}
+      {/*</ul>*/}
+      <ReactScrollableList
+        listItems={coinList}
+        heightOfItem={30}
+        maxItemsToRender={20}
+        style={{overflowY: 'scroll', height: '78vh'}}
+      />
     </div>
   );
 };

@@ -1,5 +1,23 @@
-.coin {
-  padding: 20px;
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.wrapper {
+}
+
+.header {
+  padding: 25px 30px;
+  border-bottom: 1px solid #212529;
+  box-shadow: 0px 1px 2px 0px rgba(76, 90, 96, 0.81);
+}
+.header__name {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.content {
+  //background: linear-gradient(90deg, #212529, #123051);
+  height: 500px;
+  padding: 20px 10px;
 }
 
 .loading {
@@ -8,3 +26,17 @@
   display: block;
   margin-top: 80px;
 }
+
+.verticalDiv {
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  background: rgba(68, 68, 68, 0.18);
+  margin: 0 20px;
+}
+
+.conversionPrice {
+  color: $green;
+  line-height: 1.5em;
+}
+

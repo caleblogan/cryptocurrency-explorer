@@ -45,6 +45,7 @@ class Coins extends Component {
         console.log(err)
         this.setState({isLoadingCoins: false});
       })
+
   }
 
   handleSearchChange(e) {
@@ -76,6 +77,15 @@ class Coins extends Component {
     return path.length === 2 ? path[1] : null;
   }
 
+  getCoinSymbol(id) {
+    for (let i = 0; i < this.state.coins.length; ++i) {
+      if (this.state.coins[i].id === id) {
+        return this.state.coins[i].symbol;
+      }
+    }
+    return 'BTC';
+  }
+
   render() {
     return (
       <div>
@@ -96,7 +106,10 @@ class Coins extends Component {
           <Col md="9">
             <Switch>
               <Route exact path="/coins" render={props => (<Redirect to={`/coins/${this.defaultCoinId}`}/>)}/>
-              <Route path="/coins/:id" component={Coin}/>
+              <Route path="/coins/:id" render={(props) => {
+                props.coinSymbol = this.getCoinSymbol(props.match.params.id);
+                return <Coin {...props}/>
+              }}/>
             </Switch>
           </Col>
         </Row>
